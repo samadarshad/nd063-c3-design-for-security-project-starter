@@ -1,5 +1,28 @@
 Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
 
+The threats to the secret recipes are:
+- the web server is accessed by a malicious user
+- a malicious user pretends to be a priviledged business user  
+- the s3 bucket for secret recipes is accessed by a malicious user
+
 # Poor practice 1
+The Web Server is a exposed because:
+- the server is placed in a public subnet, thus having a public IP and exposed.
+- the server is within a security group that allows all inbound access and outbound access.
+- the public load balancer is within a security group that allows all outbound access i.e. ssh to the web server
+The Web Server is a risk because:
+- the server has role policy privilidges that allows full access to the s3 bucket of secret recipes
+
 
 # Poor practice 2
+The priviledged business use-case API is exposed because:
+- there is no authentication for the business users
+This API is a risk because:
+- the API have full access to the s3 bucket of secret recipes
+
+
+# Poor practice 3
+The s3 bucket for secret recipes is exposed because:
+- the bucket allows all public access i.e. the objects have a publically accessible url
+The s3 bucket for secret recipes is a risk because:
+- the recipes have no custom key encryption
