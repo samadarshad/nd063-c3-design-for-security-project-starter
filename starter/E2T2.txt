@@ -1,3 +1,19 @@
 Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
 
 Bonus - provide recommendations on how to remediate the vulnerabilities.
+
+All S3 Buckets:
+S3.8 S3 Block Public Access setting should be enabled at the bucket-level
+S3.5 S3 buckets should require requests to use Secure Socket Layer
+S3.4 S3 buckets should have server-side encryption enabled
+
+Recipe Web Server Instance:
+On instance i-09f24fc8c1e5dc950, UDP port 21 which is associated with 'FTP' (Including several other ports and protocols i.e. SSH on port 22 etc.) is reachable from the internet
+- You can edit the Security Group sg-068d4fe41d89ac729 to remove access from the internet on port 21 etc
+Aggregate network exposure: On instance i-09f24fc8c1e5dc950, ports are reachable from the internet through ENI eni-04da99e094bdb0f43 and security group sg-068d4fe41d89ac729
+- You can edit the Security Group sg-068d4fe41d89ac729 to remove access from the internet
+EC2.7	EBS default encryption should be enabled
+
+VPC:
+EC2.10 Amazon EC2 should be configured to use VPC endpoints that are created for the Amazon EC2 service
+
