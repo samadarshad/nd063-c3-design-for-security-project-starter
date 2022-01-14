@@ -1,5 +1,8 @@
-
-
 # Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
+- Disable password login for SSH to the Recipe Web Server
+- Change Web Server to private subnet
+- Change Security Group of Web Server to only allow ingress HTTP traffic from ELB, block everything else
 
 # Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+- Remove public access to S3 secret recipe bucket, create bucket policy to restrict access to a role, with write-only access (as per business use-case)
+- Enable custom key encryption on S3 bucket
