@@ -80,6 +80,7 @@ Resources:
           Fn::Sub:
             - |
               #!/bin/bash
+              sed -i -E 's/#?PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
               echo "Environment=S3_FREE_RECIPES="${S3FreeRecipies} | sudo tee -a /lib/systemd/system/flask.service
               echo "Environment=S3_SECRET_RECIPES="${S3SecretRecipies} | sudo tee -a /lib/systemd/system/flask.service
               systemctl daemon-reload
