@@ -6,7 +6,7 @@ Resources:
     Properties:
       BucketName: !Join [ "-", [ "cand-c3-free-recipes", !Ref 'AWS::AccountId' ] ]
       BucketEncryption:
-        ServerSideEnryptionConfiguration:
+        ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: 'AES256'
   S3BucketRecipesSecret:
@@ -14,7 +14,7 @@ Resources:
     Properties:
       BucketName: !Join [ "-", [ "cand-c3-secret-recipes", !Ref 'AWS::AccountId' ] ]
       BucketEncryption:
-        ServerSideEnryptionConfiguration:
+        ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: 'AES256'
   S3BucketVPCFlowLogs:
