@@ -51,6 +51,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupName: WebAppSG
+      VpcId: !ImportValue VpcId
       GroupDescription: "Security group for this application server"
       SecurityGroupEgress:
       - IpProtocol: -1
@@ -59,8 +60,8 @@ Resources:
       - IpProtocol: tcp
         FromPort: 5000
         ToPort: 5000
-        SourceSecurityGroupName: !Ref AppLoadBalancerSG
-      VpcId: !ImportValue VpcId
+        SourceSecurityGroupId: !GetAtt AppLoadBalancerSG.GroupId
+      
 
   RecipeWebServiceInstance:
     Type: AWS::EC2::Instance
