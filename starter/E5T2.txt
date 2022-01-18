@@ -1,13 +1,20 @@
 # Identify tools that will allow you to do the following:
 
 ## Scan infrastructure as code templates
+- Cfripper - https://github.com/Skyscanner/cfripper
 
 ### Example vulnerability
+Overpriviledged IAM policies e.g.
+ - FullWildcardPrincipalRule: rootRole should not allow wildcards in principals (principal: '*')
 
 ##Scan AMI’s or containers for OS vulnerabilities
+- Clair - https://github.com/quay/clair
 
 ### Example vulnerability
+e.g. CVE-2018-7169 https://security-tracker.debian.org/tracker/CVE-2018-7169
 
 ##Scan an AWS environment for cloud configuration vulnerabilities
+- AWS Config
 
 ### Example vulnerability
+e.g. securityhub-s3-bucket-public-read-prohibited: Checks to see if S3 buckets are publicly readable.
