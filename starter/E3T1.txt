@@ -1,3 +1,7 @@
 # Describe GuardDuty findings that were detected related to the brute force attack
+- The recipe web server is recieving a SSH Brute Force attack
+- The attack web server is delivering a SSH Brute Force attack
 
 # Research the AWS Guard Duty documentation page and explain how GuardDuty may have detected this attack - i.e. what was its source of information.
+- Sources of information are VPC Flow Logs, AWS CloudTrail event logs and DNA logs. ( https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_data-sources.html ) 
+- The SSH Brute Force attack would have been detected from the VPC Flow Logs,  

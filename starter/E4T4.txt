@@ -1,8 +1,21 @@
 
 # What additional architectural change can be made to reduce the internet facing attack surface of the web application instance.
+1) Reducing SSH login access
+- Deploy Immutable Instances so that there is no need to login to the instance
+- If not possible, change SSH login to be done via AWS Systems Manager so there is no internet exposure required, nor passwords/private keys managed for the instance.
+2) Reducing internet access
+- Move Web server to a private subnet, with a Network ACL that only allows traffic from the Load Balancer
+- Or update web server security group to only allow traffic from the load Balancer
+3) Reducing attack traffic
+- Add AWS Web Application Firewall to the Load Balancer which will protect the load balancer from common exploits
+
 
 # Assuming the IAM permissions for the S3 bucket are still insecure, would creating VPC private endpoints for S3 prevent the unauthorized access to the secrets bucket.
+Moving the S3 endpoint to a private subnet will only prevent access from outside the VPC.
+Therefore, as the IAM permissions are unsecure, there is still possibility of unauthorized access to the VPC, and thus unauthorized access to S3. 
 
 # Will applying default encryption setting to the s3 buckets encrypt the data that already exists?
+Existing objects will not get re-encrypted with the new encryption settings.
 
 # What would happen if the original cloud formation templates are applied to this environment.
+The security hardening changes would be reverted, therefore the web server would be exposed again to all the original security risks.
